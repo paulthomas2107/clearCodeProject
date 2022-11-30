@@ -25,7 +25,7 @@ class ParticleStar:
         direction_x = random.randint(-3, 3)
         direction_y = random.randint(-3, 3)
         lifetime = random.randint(4, 10)
-        particle_rect = pygame.Rect(pos_x, pos_y, self.width, self.height)
+        particle_rect = pygame.Rect(int(pos_x), int(pos_y), self.width, self.height)
         self.particles.append([particle_rect, direction_x, direction_y, lifetime])
 
     def delete_particles(self):
@@ -37,11 +37,7 @@ pygame.init()
 pygame.display.set_caption("Particle Effects (Nyan)")
 screen = pygame.display.set_mode((1000, 800))
 clock = pygame.time.Clock()
-
 particle = ParticleStar()
-
-nyan_surface = pygame.image.load('nyan_cat.png').convert_alpha()
-
 PARTICLE_EVENT = pygame.USEREVENT + 1
 pygame.time.set_timer(PARTICLE_EVENT, 40)
 
